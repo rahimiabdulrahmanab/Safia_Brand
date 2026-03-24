@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safia — Premium Afghan Dry Fruits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #0d0a07; --parchment: #f4ede0; --gold: #b8883a;
+  --gold-light: #d4a85a; --muted: rgba(244,237,224,0.5);
+  --border: rgba(184,136,58,0.2); --card-bg: rgba(255,255,255,0.03);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--ink); color: var(--parchment); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 5rem; background: linear-gradient(to bottom, rgba(13,10,7,0.95), transparent); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; letter-spacing: 0.3em; color: var(--gold-light); text-transform: uppercase; text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+.nav-logo span { font-size: 0.48rem; letter-spacing: 0.4em; color: rgba(212,168,90,0.55); text-transform: uppercase; margin-top: 3px; }
+.nav-links { display: flex; gap: 2.8rem; list-style: none; }
+.nav-links a { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--parchment); text-decoration: none; opacity: 0.6; transition: opacity .3s, color .3s; }
+.nav-links a:hover { opacity: 1; color: var(--gold-light); }
+.nav-cta { padding: 0.55rem 1.5rem; border: 1px solid var(--gold); color: var(--gold) !important; opacity: 1 !important; }
+.nav-cta:hover { background: var(--gold); color: var(--ink) !important; }
+
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 5rem 5rem; gap: 4rem; position: relative; overflow: hidden; }
+.hero-glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(184,136,58,0.09) 0%, transparent 70%); top: -120px; right: -80px; pointer-events: none; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 0.9rem; font-size: 0.62rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; }
+.hero-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--parchment); margin-bottom: 1.8rem; }
+.hero-title em { font-style: italic; color: var(--gold-light); display: block; }
+.hero-sub { font-size: 0.9rem; line-height: 1.9; color: var(--muted); max-width: 440px; margin-bottom: 3rem; }
+.hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
+.btn-primary { display: inline-block; padding: 0.9rem 2.4rem; background: var(--gold); color: var(--ink); font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background .3s; font-weight: 500; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-ghost { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--parchment); text-decoration: none; opacity: 0.6; transition: opacity .3s; }
+.btn-ghost:hover { opacity: 1; }
+.btn-ghost::after { content: '→'; transition: transform .3s; }
+.btn-ghost:hover::after { transform: translateX(4px); }
+
+.hero-visual { display: flex; align-items: center; justify-content: center; position: relative; aspect-ratio: 1; max-width: 480px; }
+.orbit-ring { position: absolute; border-radius: 50%; border: 1px dashed rgba(184,136,58,0.15); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.hero-plate { width: 80%; aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+.hero-plate-inner { width: 78%; aspect-ratio: 1; border-radius: 50%; background: rgba(184,136,58,0.06); border: 1px solid rgba(184,136,58,0.3); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.6rem; }
+.hero-main-icon { font-size: 3.5rem; line-height: 1; }
+.hero-plate-caption { font-size: 0.52rem; letter-spacing: 0.38em; text-transform: uppercase; color: rgba(212,168,90,0.5); }
+.hero-badge { position: absolute; width: 86px; height: 86px; border-radius: 50%; border: 1px solid var(--border); background: rgba(13,10,7,0.9); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 2px; }
+.hero-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold-light); line-height: 1; font-weight: 300; }
+.hero-badge-label { font-size: 0.46rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.badge-1 { top: 5%; right: 8%; }
+.badge-2 { bottom: 10%; left: 3%; }
+
+/* TRUST */
+.trust { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 5rem 0; }
+.trust-item { flex: 1; padding: 2rem 2.5rem; text-align: center; border-right: 1px solid var(--border); }
+.trust-item:last-child { border-right: none; }
+.trust-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: var(--gold-light); display: block; }
+.trust-label { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; display: block; }
+
+/* SECTION COMMON */
+.section-label { font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--parchment); margin-bottom: 0.8rem; }
+.section-title em { font-style: italic; color: var(--gold-light); }
+.section-sub { font-size: 0.85rem; line-height: 1.85; color: var(--muted); max-width: 540px; margin-bottom: 4rem; }
+
+/* PRODUCTS */
+.products { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--border); }
+.product-card { padding: 3rem 2.5rem; border-right: 1px solid var(--border); position: relative; overflow: hidden; cursor: pointer; transition: background .4s; background: var(--card-bg); }
+.product-card:nth-child(3n) { border-right: none; }
+.product-card-row2 { border-top: 1px solid var(--border); }
+.product-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 70% at 50% 30%, rgba(184,136,58,0.08) 0%, transparent 70%); opacity: 0; transition: opacity .4s; }
+.product-card:hover::after { opacity: 1; }
+.product-card:hover { background: rgba(184,136,58,0.04); }
+.product-icon-wrap { width: 52px; height: 52px; margin-bottom: 1.8rem; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; position: relative; z-index: 1; }
+.product-tag { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; position: relative; z-index: 1; }
+.product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 400; color: var(--parchment); margin-bottom: 0.9rem; line-height: 1.2; position: relative; z-index: 1; }
+.product-desc { font-size: 0.79rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.8rem; position: relative; z-index: 1; }
+.product-origin { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.57rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 0.32rem 0.75rem; position: relative; z-index: 1; }
+.product-num-bg { position: absolute; bottom: 0.8rem; right: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 6rem; font-weight: 300; color: rgba(184,136,58,0.07); line-height: 1; pointer-events: none; transition: color .4s; }
+.product-card:hover .product-num-bg { color: rgba(184,136,58,0.14); }
+
+/* ABOUT */
+.about { padding: 8rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1300px; margin: 0 auto; }
+.about-visual { position: relative; aspect-ratio: 0.82; border: 1px solid var(--border); overflow: hidden; }
+.about-photo-placeholder { width: 100%; height: 100%; background: linear-gradient(145deg, rgba(184,136,58,0.08) 0%, rgba(13,10,7,0.7) 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1.2rem; }
+.about-initials { width: 100px; height: 100px; border-radius: 50%; background: rgba(184,136,58,0.12); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-light); font-weight: 300; }
+.about-placeholder-text { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); }
+.about-tag-corner { position: absolute; bottom: 0; right: 0; background: var(--gold); color: var(--ink); padding: 0.9rem 1.4rem; font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.03em; }
+.about-tag-label { font-family: 'Jost', sans-serif; font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; display: block; margin-bottom: 3px; }
+.about-body { font-size: 0.86rem; line-height: 2; color: var(--muted); margin-bottom: 1.6rem; }
+.about-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--parchment); font-weight: 400; margin-bottom: 0.3rem; margin-top: 1.5rem; }
+.about-role { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+/* WHY */
+.why { padding: 6rem 5rem; background: rgba(184,136,58,0.025); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.why-inner { max-width: 1200px; margin: 0 auto; }
+.why-header { text-align: center; margin-bottom: 4rem; }
+.why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+.why-card { padding: 2.5rem 2rem; border: 1px solid var(--border); text-align: center; background: var(--card-bg); }
+.why-icon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+.why-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--parchment); margin-bottom: 0.75rem; font-weight: 400; }
+.why-text { font-size: 0.77rem; line-height: 1.8; color: var(--muted); }
+
+/* CONTACT */
+.contact { padding: 7rem 5rem; max-width: 1200px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.contact-body { font-size: 0.86rem; line-height: 1.95; color: var(--muted); margin-bottom: 2.5rem; }
+.contact-items { display: flex; flex-direction: column; gap: 1.4rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1.2rem; }
+.contact-item-icon { width: 40px; height: 40px; flex-shrink: 0; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+.contact-item-label { font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+.contact-item-value { font-size: 0.84rem; color: var(--parchment); }
+.contact-item-value a { color: var(--gold-light); text-decoration: none; }
+.contact-item-value a:hover { text-decoration: underline; }
+.btn-whatsapp { display: inline-flex; align-items: center; gap: 0.8rem; padding: 0.9rem 2rem; margin-top: 2rem; background: #1a5c35; border: 1px solid #2d8a54; color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background .3s; }
+.btn-whatsapp:hover { background: #21703f; }
+.btn-whatsapp svg { width: 17px; height: 17px; fill: #fff; flex-shrink: 0; }
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.form-control { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 0.85rem 1rem; color: var(--parchment); font-family: 'Jost', sans-serif; font-size: 0.83rem; outline: none; transition: border-color .3s; }
+.form-control:focus { border-color: var(--gold); }
+.form-control::placeholder { color: rgba(244,237,224,0.25); }
+textarea.form-control { resize: vertical; min-height: 120px; }
+select.form-control option { background: #1a1410; }
+.btn-submit { padding: 1rem 2.4rem; background: var(--gold); border: none; color: var(--ink); font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; font-weight: 500; align-self: flex-start; transition: background .3s; }
+.btn-submit:hover { background: var(--gold-light); }
+.form-success { display: none; font-size: 0.78rem; color: #5cbe85; letter-spacing: 0.08em; margin-top: 0.5rem; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 3.5rem 5rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: 0.3em; color: var(--gold-light); text-transform: uppercase; font-weight: 300; }
+.footer-tagline { font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+.footer-copy { font-size: 0.6rem; color: rgba(244,237,224,0.25); letter-spacing: 0.08em; text-align: center; }
+.footer-links { display: flex; gap: 2rem; justify-content: flex-end; }
+.footer-links a { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(244,237,224,0.4); text-decoration: none; transition: color .3s; }
+.footer-links a:hover { color: var(--gold); }
+
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .85s ease, transform .85s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.d1{transition-delay:.1s} .d2{transition-delay:.22s} .d3{transition-delay:.34s} .d4{transition-delay:.46s}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.float { animation: float 6s ease-in-out infinite; }
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:1.2rem 2rem;} .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;padding:8rem 2rem 4rem;text-align:center;}
+  .hero-eyebrow{justify-content:center;}
+  .hero-sub{margin:0 auto 2.5rem;}
+  .hero-actions{justify-content:center;}
+  .hero-visual{max-width:340px;margin:0 auto;}
+  .trust{flex-wrap:wrap;}
+  .trust-item{flex:1 1 50%;border-bottom:1px solid var(--border);}
+  .products-grid{grid-template-columns:1fr 1fr;}
+  .product-card:nth-child(2n){border-right:none;}
+  .product-card:nth-child(3n){border-right:1px solid var(--border);}
+  .product-card:nth-child(2n) + .product-card:nth-child(3n){border-right:none;}
+  .about{grid-template-columns:1fr;padding:5rem 2rem;gap:3rem;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .contact,.products,.about,.why{padding-left:2rem;padding-right:2rem;}
+  footer{grid-template-columns:1fr;text-align:center;padding:2.5rem 2rem;}
+  .footer-links{justify-content:center;}
+}
+@media(max-width:600px){
+  .products-grid{grid-template-columns:1fr;}
+  .product-card:nth-child(n){border-right:none;border-bottom:1px solid var(--border);}
+  .why-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Safia<span>Premium Afghan Dry Fruits</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#why">Why Safia</a></li>
+    <li><a href="#contact" class="nav-cta">Enquire Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div>
+    <p class="hero-eyebrow">Afghanistan's Finest — Exported Worldwide</p>
+    <h1 class="hero-title">The World's Finest<br><em>Afghan Dry Fruits</em></h1>
+    <p class="hero-sub">From the saffron fields of Herat to the apricot gardens of Badakhshan — Safia brings Afghanistan's most treasured natural produce to buyers across the globe.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#products">Explore Products</a>
+      <a class="btn-ghost" href="#contact">Request a Quote</a>
+    </div>
+  </div>
+  <div class="hero-visual float">
+    <div class="orbit-ring" style="width:110%;height:110%;"></div>
+    <div class="orbit-ring" style="width:90%;height:90%;"></div>
+    <div class="hero-plate">
+      <div class="hero-plate-inner">
+        <div class="hero-main-icon">🌸</div>
+        <div class="hero-plate-caption">Pure · Natural · Afghan</div>
+      </div>
+    </div>
+    <div class="hero-badge badge-1"><span class="hero-badge-num">14+</span><span class="hero-badge-label">Countries</span></div>
+    <div class="hero-badge badge-2"><span class="hero-badge-num">100%</span><span class="hero-badge-label">Natural</span></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-item reveal"><span class="trust-num">7+</span><span class="trust-label">Premium Products</span></div>
+  <div class="trust-item reveal d1"><span class="trust-num">14+</span><span class="trust-label">Export Destinations</span></div>
+  <div class="trust-item reveal d2"><span class="trust-num">100%</span><span class="trust-label">Naturally Sourced</span></div>
+  <div class="trust-item reveal d3"><span class="trust-num">A+</span><span class="trust-label">Export Grade Quality</span></div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="reveal">
+    <p class="section-label">Our Collection</p>
+    <h2 class="section-title">Afghanistan's <em>Gift to the World</em></h2>
+    <p class="section-sub">Every product is hand-selected from trusted Afghan farmers, sun-dried and carefully graded to preserve natural flavour, colour, and nutritional value — ready for global export.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal d1">
+      <div class="product-icon-wrap">🌸</div>
+      <p class="product-tag">Most Prized</p>
+      <h3 class="product-name">Afghan Saffron</h3>
+      <p class="product-desc">Herat-grown Crocus sativus — consistently ranked the world's finest. Vivid crimson threads with intense aroma, deep colour, and unrivalled potency per gram.</p>
+      <span class="product-origin">📍 Herat Province</span>
+      <div class="product-num-bg">01</div>
+    </div>
+    <div class="product-card reveal d2">
+      <div class="product-icon-wrap">🌿</div>
+      <p class="product-tag">Signature Export</p>
+      <h3 class="product-name">Dried Figs</h3>
+      <p class="product-desc">Sun-dried Afghan figs — naturally sweet, soft, and fibre-rich. Harvested from ancient orchards and dried without additives or preservatives.</p>
+      <span class="product-origin">📍 Kandahar Region</span>
+      <div class="product-num-bg">02</div>
+    </div>
+    <div class="product-card reveal d3">
+      <div class="product-icon-wrap">🌾</div>
+      <p class="product-tag">Culinary Staple</p>
+      <h3 class="product-name">Zeera (Cumin)</h3>
+      <p class="product-desc">Wild and cultivated Afghan cumin — earthy, warm, and intensely fragrant. A cornerstone of South Asian and Middle Eastern cuisine, prized by chefs worldwide.</p>
+      <span class="product-origin">📍 Ghor & Badghis</span>
+      <div class="product-num-bg">03</div>
+    </div>
+    <div class="product-card product-card-row2 reveal d1">
+      <div class="product-icon-wrap">🍑</div>
+      <p class="product-tag">Mountain Sweet</p>
+      <h3 class="product-name">Dried Apricots</h3>
+      <p class="product-desc">Unsulphured organic Afghan apricots — tart-sweet, chewy, iron-rich. Air-dried in high-altitude mountain sunlight to lock in colour and nutrients.</p>
+      <span class="product-origin">📍 Badakhshan & Bamyan</span>
+      <div class="product-num-bg">04</div>
+    </div>
+    <div class="product-card product-card-row2 reveal d2">
+      <div class="product-icon-wrap">🌲</div>
+      <p class="product-tag">Forest Harvest</p>
+      <h3 class="product-name">Pine Nuts (Chilgoza)</h3>
+      <p class="product-desc">Hand-gathered Pinus gerardiana from Afghanistan's Nuristan forests. Buttery, delicate, and exceptionally nutritious — a rare luxury in global markets.</p>
+      <span class="product-origin">📍 Nuristan Province</span>
+      <div class="product-num-bg">05</div>
+    </div>
+    <div class="product-card product-card-row2 reveal d3">
+      <div class="product-icon-wrap">🍇</div>
+      <p class="product-tag">Golden Kishmish</p>
+      <h3 class="product-name">Afghan Raisins</h3>
+      <p class="product-desc">Golden, green, and black varieties sun-dried from Kandahar's legendary grapes. Plump, aromatic, and completely additive-free — among the world's finest raisins.</p>
+      <span class="product-origin">📍 Kandahar & Herat</span>
+      <div class="product-num-bg">06</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-photo-placeholder">
+      <div class="about-initials">SA</div>
+      <p class="about-placeholder-text">Eng Sanaullah Aftab</p>
+      <p class="about-placeholder-text" style="font-size:0.5rem;opacity:0.5;margin-top:-0.5rem;">Replace with your photo</p>
+    </div>
+    <div class="about-tag-corner">
+      <span class="about-tag-label">Founder</span>
+      Eng Sanaullah Aftab
+    </div>
+  </div>
+  <div class="reveal d2">
+    <p class="section-label">Our Founder & Story</p>
+    <h2 class="section-title">A Vision Born<br>from <em>Afghan Soil</em></h2>
+    <p class="about-body">Afghanistan has long been a land of extraordinary natural abundance. Its saffron fields, fig orchards, apricot gardens, and mountain pine forests produce some of the most treasured foods on earth — yet for generations, this quality went largely unknown to the world.</p>
+    <p class="about-body">Safia was founded with a singular purpose: to connect Afghanistan's finest produce directly with global buyers. We believe Afghan farmers deserve dignified access to international markets — and that buyers around the world deserve produce of real, traceable provenance.</p>
+    <div>
+      <div class="about-name">Eng Sanaullah Aftab</div>
+      <div class="about-role">Founder & Director — Safia Brand, Kabul</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SAFIA -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-header reveal">
+      <p class="section-label">Why Choose Safia</p>
+      <h2 class="section-title">Quality You Can <em>Trust</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal d1"><div class="why-icon">🏔️</div><div class="why-title">Direct from Source</div><p class="why-text">We work directly with Afghan farmers and cooperatives — ensuring full traceability, fair prices, and authentic provenance for every batch.</p></div>
+      <div class="why-card reveal d2"><div class="why-icon">✅</div><div class="why-title">Export Grade Quality</div><p class="why-text">Every shipment is carefully cleaned, graded, and inspected. We supply importers, wholesalers, and premium retailers to the highest standards.</p></div>
+      <div class="why-card reveal d3"><div class="why-icon">🌍</div><div class="why-title">Global Shipping</div><p class="why-text">We export to Europe, the Middle East, North America, and Asia with reliable logistics, full documentation, and flexible minimum order quantities.</p></div>
+      <div class="why-card reveal d4"><div class="why-icon">🤝</div><div class="why-title">Long-Term Partnerships</div><p class="why-text">We value lasting relationships. Personalised service, sample requests, custom packaging, and competitive wholesale pricing for serious buyers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="reveal" style="margin-bottom:3.5rem;">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Ready to <em>Import?</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="contact-body">Whether you are an importer, wholesaler, distributor, or retailer — we would love to discuss how Safia can serve your market. Request a sample, ask about pricing, or introduce your business below.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:info@safiabrand.com">info@safiabrand.com</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div><div class="contact-item-label">Phone / WhatsApp</div><div class="contact-item-value"><a href="tel:+93XXXXXXXXX">+93 XXX XXX XXXX</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div><div class="contact-item-label">Headquarters</div><div class="contact-item-value">Kabul, Islamic Republic of Afghanistan</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🌐</div>
+          <div><div class="contact-item-label">We Export To</div><div class="contact-item-value">Europe · Middle East · North America · Asia Pacific</div></div>
+        </div>
+      </div>
+      <a class="btn-whatsapp" href="https://wa.me/93XXXXXXXXX" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+    <div class="reveal d2">
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Full Name *</label><input class="form-control" type="text" placeholder="Your full name" required></div>
+          <div class="form-group"><label class="form-label">Company</label><input class="form-control" type="text" placeholder="Company or organisation"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Email *</label><input class="form-control" type="email" placeholder="your@email.com" required></div>
+          <div class="form-group"><label class="form-label">Country</label><input class="form-control" type="text" placeholder="Your country"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product of Interest</label>
+          <select class="form-control">
+            <option value="">Select a product...</option>
+            <option>Afghan Saffron</option>
+            <option>Dried Figs</option>
+            <option>Zeera (Cumin)</option>
+            <option>Dried Apricots</option>
+            <option>Pine Nuts (Chilgoza)</option>
+            <option>Afghan Raisins</option>
+            <option>Mixed / Full Range</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message *</label>
+          <textarea class="form-control" placeholder="Tell us about your requirements — quantities, destination, packaging preferences, or any questions..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Enquiry →</button>
+        <p class="form-success" id="formSuccess">✓ Thank you — Eng Sanaullah Aftab's team will be in touch shortly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Safia</div>
+    <div class="footer-tagline">Premium Afghan Dry Fruits — Global Export</div>
+  </div>
+  <p class="footer-copy">© 2025 Safia Brand. Founded by Eng Sanaullah Aftab. Kabul, Afghanistan.</p>
+  <div class="footer-links">
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }), {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  function submitForm(e){
+    e.preventDefault();
+    document.getElementById('formSuccess').style.display='block';
+    e.target.reset();
+  }
+</script>
+</body>
+</html>
